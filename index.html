@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#HealingEra: Untuk Kamu yang Jadi "Strong Friend"</title>
+    <style>
+        /* Variabel CSS untuk tema */
+        :root {
+            --primary: #ff6b8b;
+            --secondary: #6a5af9;
+            --accent: #4ecdc4;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-pink: #fff5f7;
+            --light-purple: #f8f7ff;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset dan base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: fadeInDown 1s ease;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .decoration:nth-child(1) {
+            top: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+        }
+
+        .decoration:nth-child(2) {
+            bottom: -80px;
+            right: -30px;
+            width: 250px;
+            height: 250px;
+            animation-delay: 2s;
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        /* Highlight Box */
+        .highlight {
+            background: var(--light-pink);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* List Styles */
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        li::marker {
+            color: var(--accent);
+        }
+
+        /* Quote Styles */
+        .quote {
+            background: var(--light-purple);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            position: relative;
+            font-style: italic;
+        }
+
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--secondary);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .quote::before {
+            top: 10px;
+            left: 15px;
+        }
+
+        .quote::after {
+            bottom: -15px;
+            right: 15px;
+        }
+
+        /* Step Boxes */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Call to Action */
+        .cta {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .cta h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta h2::after {
+            background: white;
+            width: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Animasi */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="decoration"></div>
+        <div class="decoration"></div>
+        <div class="header-content">
+            <h1>#HealingEra</h1>
+            <p class="subtitle">Untuk Kamu yang Jadi "Strong Friend", Tapi Dalamnya Capek Cari Validasi</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro">
+            <h2>Kenalin, Si "Strong Friend" yang Sebenarnya Lagi Berperang</h2>
+            <p>Kamu punya teman yang kayak gini nggak? Atau jangan-jangan ini kamu? Dia keliatan <strong>super friendly, supel, dan kayaknya percaya diri banget.</strong> Life of the party! Tapi ada satu hal yang mungkin cuma sedikit orang yang liat: <strong>dia sering banget "tebar pesona"</strong> buat dapetin perhatian, especially dari lawan jenis.</p>
+            
+            <div class="highlight">
+                <p>Yang bikin bingung, <strong>dia sendiri sering ngomongin kata-kata bijak:</strong> "Hidup nggak harus bergantung sama validasi orang lain!" dan "Jadilah diri sendiri!".</p>
+            </div>
+            
+            <p><strong>Kok bisa sih, ngomongnya sama kelakuannya beda?</strong></p>
+            <p>Jawabannya: <strong>Dia nggak munafik. Dia lagi berperang.</strong> Perang antara <strong>"Aku yang Dewasa"</strong> yang udah paham teori self-love, melawan <strong>"Si Kecil di Dalam Diriku"</strong> yang masih sedih, kesepian, dan laper banget pengen dengar, "Kamu berharga."</p>
+        </section>
+
+        <section id="root-cause">
+            <h2>Akar Masalahnya: Cerita tentang "Sang Ayah yang Hilang"</h2>
+            <p>Semua itu biasanya berawal dari satu luka lama: <strong>kehilangan figur ayah.</strong> Dalam kasus temenku, ayahnya meninggal dunia.</p>
+            
+            <div class="quote">
+                "Lah, tapi kan dia punya ayah tiri dan keluarganya keliatan bahagia sekarang?"
+            </div>
+            
+            <p>Betul. Dan itu adalah berkat yang besar. Tapi, <strong>kehilangan ayah kandung itu meninggalkan jejak yang dalam.</strong> Ibaratnya, lukisan indah yang pernah retak. Sudah diperbaiki dengan sangat cantik, tapi garis retaknya masih ada.</p>
+            
+            <h3>Apa yang dirasakan "Si Kecil" dalam dirinya?</h3>
+            <ul>
+                <li><strong>Rasa "Berbeda":</strong> "Aku anak yang papanya nggak ada."</li>
+                <li><strong>Pertanyaan Identitas:</strong> "Aku ini mirip siapa sih? Seperti apa sih papaku?"</li>
+                <li><strong>Ketakutan Terbesar:</strong> "Orang yang aku cintai pasti akan pergi meninggalkanku."</li>
+            </ul>
+            
+            <p>Nah, sebagai anak pertama, dia juga sering tanpa sadar jadi <strong>sandaran emosional buat ibunya.</strong> Dari kecil udah diajarin buat "kuat" dan "nggak boleh lemas". Jadi, "Strong Friend" itu adalah topeng yang udah melekat dari kecil.</p>
+        </section>
+
+        <section id="coping-mechanism">
+            <h2>Mekanisme Bertahan: "Tebar Pesona" itu Obat Pereda Sementara</h2>
+            <p>Jadi, perilaku "tebar pesona" dan butuh validasi itu apa? Itu adalah <strong>mekanisme bertahan hidup</strong> dari "Si Kecil" yang ada di dalam dirinya.</p>
+            
+            <div class="highlight">
+                <h3>Analoginya:</h3>
+                <p><strong>"Aku yang Dewasa"</strong> tahu bahwa <strong>junk food</strong> itu nggak sehat. (= "Nggak butuh validasi orang lain").</p>
+                <p>Tapi <strong>"Si Kecil" yang kelaparan</strong> akan rasa sayang dan pengakuan, lari ke <strong>junk food</strong> karena itu yang paling cepat dan mudah. (= "Tebar pesona" buat dapetin perhatian dan pujian).</p>
+            </div>
+            
+            <p>Dia dapatkan suntikan percaya diri yang <strong>instan</strong>, tapi cuma <strong>sementara</strong>. Habis itu, rasa lapar akan cinta yang tulus itu balik lagi, bahkan bisa lebih kuat. Dan siklusnya terulang.</p>
+        </section>
+
+        <section id="healing">
+            <h2>#HealingEra: Menjadi Orang Tua bagi Dirimu Sendiri</h2>
+            <p>Nah, gimana cara menyembuhkannya? Gak bisa dengan disuruh "BERHENTI!". Tapi dengan <strong>pelan-pelan mengasuh "Si Kecil" yang ada di dalam diri itu.</strong> Ini namanya <strong>Inner Child Work</strong>.</p>
+            
+            <h3>Langkah-langkah Halusnya:</h3>
+            
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h4>KENALI & AKUI</h4>
+                    <p>Kapan kamu paling pengen cari validasi? Saat itu, tanya dalam hati: "Hei, umur berapa nih perasaanku sekarang? 7 tahun? 10 tahun?" Coba akuin, "Oh, ini lagi 'Si Kecil'-ku yang lagi sedih."</p>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h4>BAYANGKAN & BICARA</h4>
+                    <p>Cari waktu tenang. Bayangkan kamu bertemu dengan versi kecil dirimu di tempat yang aman. Lihat dia. Apa ekspresinya? Peluk dia. Katakan yang dia butuhkan dengar.</p>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h4>PENUHI KEBUTUHANNYA</h4>
+                    <p>"Si Kecil" butuh main? Yuk, mewarnai atau nonton film kartun. Butuh rasa aman? Buat kamar kamu jadi cozy sanctuary. Butuh dengar pujian? Tulis di sticky note.</p>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <h4>JADI ORANG TUA BAGI DIRIMU</h4>
+                    <p>Ketika ada dorongan "tebar pesona", tanya: "Bisa nggak aku kasih ke diri sendiri, apa yang sebenarnya aku cari dari orang lain?"</p>
+                </div>
+            </div>
+            
+            <div class="quote">
+                "Kamu itu bukan lukisan retak. Kamu adalah mosaik indah yang tersusun dari setiap keping pengalamanmu, termasuk keping yang patah itu."
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Untuk Kamu, "Strong Friend" yang Berharga</h2>
+            <p>Proses healing ini bukan tentang jadi sempurna. Ini tentang <strong>belajar mendengar teriakan hati "Si Kecil" kita</strong> sebelum dia menjerit-jerit cari perhatian.</p>
+            <p>Kamu nggak sendirian. Banyak dari kita yang jadi "strong friend" tapi dalamnya lagi berproses.</p>
+            <a href="#" class="btn">Mulai Healing Journey-mu</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>Dibuat dengan ❤️ untuk semua "Strong Friend" di luar sana</p>
+        <p>#HealingEra - 2024</p>
+    </footer>
+
+    <script>
+        // Animasi scroll untuk sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Animasi untuk highlight boxes
+            const highlights = document.querySelectorAll('.highlight');
+            highlights.forEach(box => {
+                box.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                box.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Animasi untuk tombol
+            const btn = document.querySelector('.btn');
+            if (btn) {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
